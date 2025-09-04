@@ -9,7 +9,7 @@ import numpy as np
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 ## 1. Conexão com o SQLite
-db_path = "northwind.sqlite"  # ajuste se necessário
+db_path = "northwind.sqlite"
 cnxn = sqlite3.connect(db_path)
 
 #-----------------------------------------------------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ tables = pd.read_sql(tables_query, cnxn)
 print("Tabelas disponíveis no banco:\n")
 print(tables)
 
-# Escolha da tabela
+# Escolher  tabela
 chosen_table = input("\nDigite o nome da tabela que deseja analisar: ")
 
 #-----------------------------------------------------------------------------------------------------------------------------------
@@ -157,9 +157,10 @@ if n_combinations > 0:
     plt.tight_layout()
     plt.show()
 
-# 9.3 - Gráfico de dispersão principal com seaborn
+# 9.3 - Gráfico de dispersão interativo com seaborn
+print("\n=== GRÁFICO DE DISPERSÃO PRINCIPAL (SEABORN) ===")
+
 if len(chosen_columns) >= 2:
-    print("\n=== GRÁFICO DE DISPERSÃO PRINCIPAL (SEABORN) ===")
     plt.figure(figsize=(12, 8))
     sns.scatterplot(data=df, x=chosen_columns[0], y=chosen_columns[1], 
                    hue='cluster', palette='viridis', s=100, alpha=0.8)
@@ -169,20 +170,20 @@ if len(chosen_columns) >= 2:
     plt.ylabel(chosen_columns[1], fontsize=14)
     plt.legend(title='Cluster', title_fontsize=12, fontsize=10)
     plt.grid(True, alpha=0.3)
-    plt.tight_layout()
     plt.show()
 
 # 9.4 - Matriz de gráficos de dispersão (Pairplot)
 if len(chosen_columns) >= 2:
     print("\n=== MATRIZ DE GRÁFICOS DE DISPERSÃO (PAIRPLOT) ===")
+    plt.figure(figsize=(15, 12))
     
     # Criar subset dos dados para pairplot
     plot_data = df[chosen_columns + ['cluster']].copy()
     
-    # Pairplot com seaborn (sem criar figura manualmente)
+    # Pairplot com seaborn
     pair_plot = sns.pairplot(plot_data, hue='cluster', palette='viridis', 
                             plot_kws={'alpha': 0.7, 's': 50},
-                            diag_kind='hist', height=3)
+                            diag_kind='hist')
     pair_plot.fig.suptitle(f'Matriz de Dispersão - Tabela: {chosen_table}', 
                           fontsize=16, y=1.02)
     plt.show()
