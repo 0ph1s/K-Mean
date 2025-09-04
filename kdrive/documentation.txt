@@ -1,0 +1,18 @@
+Instal library :
+pip install pandas scikit-learn matplotlib seaborn numpy
+
+1. **Múltiplas combinações**: Agora gera gráficos para todas as combinações possíveis de 2 colunas
+2. **Dados originais vs normalizados**: Mostra ambos os tipos de dados
+3. **Centroids visíveis**: Marca os centros dos clusters em vermelho
+4. **Pairplot**: Matriz completa de gráficos de dispersão
+5. **Melhor formatação**: Cores, legendas e grid melhorados
+
+**Sobre o número de clusters:**
+- **Para começar**: Use 3-5 clusters
+- **Olhe o gráfico do cotovelo**: Escolha onde a curva "dobra"
+- **Para Northwind**: 
+  - Products: 3-4 clusters (por preço/estoque)
+  - Orders: 4-5 clusters (por valor/quantidade)
+  - Customers: 3-4 clusters (por comportamento de compra)
+
+**Dica**: Execute o código e quando pedir o número de clusters, comece com **4** - é um bom número para a maioria das análises exploratórias!
